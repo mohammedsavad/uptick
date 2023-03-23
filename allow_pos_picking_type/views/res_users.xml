@@ -1,0 +1,17 @@
+<odoo>
+    <record id="account_analytic_line_inherited" model="ir.ui.view">
+        <field name="name">res.users.inherited.view.form</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="base.view_users_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='access_rights']" position="inside">
+                <group>
+                    <group>
+                        <field name="allowed_pos_ids" widget="many2many_tags"/>
+                        <field name="allowed_picking_ids" widget="many2many_tags"/>
+                    </group>
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>
