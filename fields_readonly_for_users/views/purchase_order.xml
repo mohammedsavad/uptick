@@ -1,0 +1,12 @@
+<odoo>
+    <record id="purchase_order_inherited_1" model="ir.ui.view">
+        <field name="name">purchase.order.inherited.view.form</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <field name="user_access" invisible="1"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -8,12 +8,15 @@
     'company': '',
     'website': '',
     'depends': [
-        'base', 'point_of_sale', 'stock'
+        'base', 'point_of_sale', 'stock', 'account'
     ],
     'data': [
         'data/picking_type_rule.xml',
         'data/pos_config_rule.xml',
-        'views/res_users.xml'
+        # 'data/purchase_journal_rule.xml',
+        # 'data/pos_payment_method.xml',
+        'views/res_users.xml',
+        'views/payment_register.xml'
     ],
     'license': 'OPL-1',
     'installable': True,

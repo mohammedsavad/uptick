@@ -1,0 +1,32 @@
+<odoo>
+    <data>
+        <record id="readonly_purchase_configuration_form" model="ir.ui.view">
+            <field name="name">readonly.purchase.form.view.inherited</field>
+            <field name="model">res.config.settings</field>
+            <field name="priority" eval="0"/>
+            <field name="inherit_id"
+                   ref="purchase.res_config_settings_view_form_purchase"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@name='purchase_setting_container']"
+                       position="inside">
+                    <div class="col-12 col-lg-6 o_setting_box"
+                         id="default_pos_session_order_setting">
+                        <div class="o_setting_left_pane">
+                            <field name="receipt_auto_validate"/>
+                        </div>
+                        <div class="o_setting_right_pane">
+                            <label string="Receipt Auto Validate"
+                                   for="receipt_auto_validate"/><br/>
+                            <field name="allowed_user_ids" widget="many2many_tags"
+                                   attrs="{'invisible':[('receipt_auto_validate', '=', False)]}"/>
+                            <br/>
+                            <div class="text-muted">
+                                Enable Auto Receipt Validation for Specific Users
+                            </div>
+                        </div>
+                    </div>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

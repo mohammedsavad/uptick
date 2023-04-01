@@ -1,0 +1,26 @@
+<odoo>
+    <record id="bank_rec_widget_inherited" model="ir.ui.view">
+        <field name="name">bank.rec.widget.inherited.view.form</field>
+        <field name="model">bank.rec.widget</field>
+        <field name="inherit_id" ref="account_accountant.view_bank_rec_widget_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//widget[@name='bank_rec_form_list']" position="replace">
+                <widget name="bank_rec_form_list_new" resModel="account.move.line" dataField="amls_widget"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="search_bank_rec_widget_inherited" model="ir.ui.view">
+        <field name="name">account.move.line.inherited.view.search</field>
+        <field name="model">account.move.line</field>
+        <field name="inherit_id" ref="account_accountant.view_account_move_line_search_bank_rec_widget"/>
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='date']" position="after">
+                <filter name="amount_paid" string="Point of Sale" domain="[('pos_config_id', '!=' , False)]"/>
+                 <group expand="0" string="Group By" colspan="4">
+                        <filter string="Point of Sale" name="pos_config_id" domain="[]" context="{'group_by':'pos_config_id'}"/>
+                 </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>

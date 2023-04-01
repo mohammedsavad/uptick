@@ -7,8 +7,10 @@
             <xpath expr="//page[@name='access_rights']" position="inside">
                 <group>
                     <group>
-                        <field name="allowed_pos_ids" widget="many2many_tags"/>
-                        <field name="allowed_picking_ids" widget="many2many_tags"/>
+                        <field name="allowed_pos_ids" widget="many2many_tags" options="{'no_create': True}"/>
+                        <field name="allowed_picking_ids" widget="many2many_tags" options="{'no_create': True}"/>
+                        <field name="allowed_journal" options="{'no_create': True, 'no_open': True}"/>
+<!--                        <field name="allowed_journal" widget="many2many_tags" options="{'no_create': True, 'no_open': True}"/>-->
                     </group>
                 </group>
             </xpath>

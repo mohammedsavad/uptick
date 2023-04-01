@@ -1,0 +1,24 @@
+<odoo>
+    <record id="pos_Manager_allow_journal_types" model="ir.rule">
+        <field name="name">POS Manager Journal Rule</field>
+        <field name="model_id" ref="point_of_sale.model_pos_payment_method"/>
+        <field name="domain_force">[(1,'=',1)]</field>
+        <field name="groups" eval="[(4, ref('base.group_system'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+
+    <record id="pos_user_allow_journal_type" model="ir.rule">
+        <field name="name">POS User Journal Rule</field>
+        <field name="model_id" ref="point_of_sale.model_pos_payment_method"/>
+        <field name="domain_force">[('journal_id', 'in', user.allowed_journal.ids)]
+        </field>
+        <field name="groups" eval="[(4, ref('base.group_user'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+</odoo>

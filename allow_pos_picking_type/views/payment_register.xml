@@ -1,0 +1,15 @@
+<odoo>
+    <record id="purchase_payment_inherited" model="ir.ui.view">
+        <field name="name">payment.register.inherited.view.form</field>
+        <field name="model">account.payment.register</field>
+        <field name="inherit_id" ref="account.view_account_payment_register_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='journal_id']" position="after">
+                <field name="user_access" invisible="1"/>
+            </xpath>
+            <xpath expr="//field[@name='journal_id']" position="attributes">
+                <attribute name="attrs">{'readonly': [('user_access', '=', False)]}</attribute>
+            </xpath>
+        </field>
+    </record>
+</odoo>

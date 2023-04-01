@@ -9,14 +9,27 @@ odoo.define('receipt_print_restriction.PrintRestriction', function (require) {
     const  PrintRestriction = AbstractReceiptScreen =>
         class extends AbstractReceiptScreen {
             setup() {
-                console.log(this)
-                this.receipt_print_count = 0;
+                if (this.props.order){
+                    this.order_id = this.props.order
+                }else{
+                    this.order_id = this.env.pos.selectedOrder
+                }
+                if (!this.order_id.receipt_print_count){
+                    var order_data = localStorage.getItem(this.order_id.uid)
+                    if(!order_data){
+                       this.order_id.receipt_print_count = 0;
+                       localStorage.setItem(this.order_id.uid, 0)
+                    }else{
+                        this.order_id.receipt_print_count = parseInt(order_data)
+                    }
+                }
             super.setup();
             }
             async _printReceipt() {
                 if (this.env.pos.config.receipt_restriction){
-                    if (this.receipt_print_count < this.env.pos.config.restriction_limit){
-                        this.receipt_print_count += 1;
+                    if (this.order_id.receipt_print_count < this.env.pos.config.restriction_limit){
+                        this.order_id.receipt_print_count += 1;
+                        localStorage.setItem(this.order_id.uid, this.order_id.receipt_print_count)
                         super._printReceipt()
                     }else{
                         const { confirmed, payload } = await this.showPopup('ErrorPopup', {

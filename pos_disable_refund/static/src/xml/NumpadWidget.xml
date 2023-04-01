@@ -1,0 +1,12 @@
+<templates id="template" xml:space="preserve">
+    <t t-inherit="point_of_sale.NumpadWidget" t-inherit-mode="extension" owl="1">
+        <xpath expr="//div//button[hasclass('numpad-minus')]" position="replace">
+            <t t-if="this.state.has_access">
+               <button class="input-button numpad-minus" t-att-class="{ 'disabled-mode': props.disableSign }" t-on-click="() => this.sendInput('-')">+/-</button>
+            </t>
+            <t t-else="">
+                <button class="input-button numpad-minus disabled-mode" >+/-</button>
+            </t>
+        </xpath>
+    </t>
+</templates>

@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 {
-    'name': 'Receipt Print Restriction',
+    'name': 'POS Credit Sale Restriction',
     'version': '16.0.1.0.0',
-    'summary': 'Receipt Print Restriction',
+    'summary': 'POS Credit Sale Restriction',
     'category': 'Productivity',
     'depends': ['base', 'point_of_sale'],
     'author': '',
@@ -10,11 +10,12 @@
     'company': '',
     'website': '',
     'data': [
-        'views/pos.config.xml'
+        'views/res_config_settings.xml'
     ],
     'assets': {
         'point_of_sale.assets': [
-            'receipt_print_restriction/static/src/js/restrict_printing.js'
+            'pos_credit_restrictions/static/src/js/PaymentScreen.js',
+            'pos_credit_restrictions/static/src/xml/PaymentScreen.xml',
         ],
     },
     'license': 'OPL-1',

@@ -1,0 +1,12 @@
+<odoo>
+    <record id="pos_order_inherited_1" model="ir.ui.view">
+        <field name="name">pos.order.inherited.view.form</field>
+        <field name="model">pos.order</field>
+        <field name="inherit_id" ref="point_of_sale.view_pos_pos_form"/>
+        <field name="arch" type="xml">
+            <button name="refund" position="attributes">
+                <attribute name="groups">point_of_sale.group_pos_manager</attribute>
+            </button>
+        </field>
+    </record>
+</odoo>
